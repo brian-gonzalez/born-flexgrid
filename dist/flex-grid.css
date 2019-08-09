@@ -1,0 +1,452 @@
+/**
+ * Flex Grid -
+ * Version: 0.3.5
+ *
+ * Simple grid built with flex box and sass.
+ *
+ * Matthew Simo - matthew.a.simo@gmail.com
+ */
+/**
+ * Grid setup
+ *
+ * The grid will calculate dimensions based on these two variables:
+ * $fg-columns: [Integer | List of Integers] will inform the grid loops how many columns there should be. Can be set as a list to generate multi-base grids.
+ * $fg-gutter:  [String | Map of Strings] will inform the grid loops how big each column's gutters should be. Can be set to a list of gutters per namespace (breakpoint).
+ */
+/**
+ * Break point namespace object
+ *
+ * Set the default namespace object with these defaults with the
+ * understanding that you can pass in whatever you might require for your site.
+ *
+ * $fg-breakpoints is a Sass list with nested lists inside. Each sub list defines two things.
+ * 1. The namespace for that breakpoint. (Required) (i.e. xs, sm, md, lg)
+ * 2. The min-width measurement for the breakpoint for that namespace. (i.e. 48em, 62em, 75em)
+ *
+ * Note: These should be in the proper order (at least till libsass handles map keys properly).
+ *
+ * Note: If the measurement is left out then it will be skipped when generating
+ * the grid and applied to global styles.
+ *
+ */
+/**
+ * Class Name Defaults
+ *
+ * Define class names for columns, rows and offsets in case compatibility with other
+ * libraries is necessary.
+ * $fg-class-grid: [String] used for the grid general classes (i.e. alignment, position, etc.)
+ * $fg-class-row: [String] used for the row class
+ * $fg-class-col: [String] used for the column class
+ * $fg-class-off: [String] used for the offset class
+*/
+/**
+ * Optional setting to add half a column push
+ * @type {[Boolean]}
+ */
+/**
+ * Calculate column size percentage
+ */
+/**
+ * Spacing mixin to create uniform margin/padding
+ */
+/**
+ * If there's more than one spacing setting,
+ * generates the gutter/spacing per namespace (breakpoint), specific to the namespaced selectors (col-xs, col-lg, etc.).
+ */
+/**
+ * Row wrapper class, flex box parent.
+ */
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem; }
+
+[class^="col-"],
+[class*=" col-"], .col {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-height: 1px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem; }
+
+.grid-justify-start {
+  justify-content: flex-start; }
+
+.grid-justify-end {
+  justify-content: flex-end; }
+
+.grid-justify-center {
+  justify-content: center; }
+
+.grid-justify-between {
+  justify-content: space-between; }
+
+.grid-justify-around {
+  justify-content: space-around; }
+
+.grid-align-start {
+  align-items: flex-start; }
+
+.grid-align-end {
+  align-items: flex-end; }
+
+.grid-align-center {
+  align-items: center; }
+
+.grid-align-baseline {
+  align-items: baseline; }
+
+.grid-align-stretch {
+  align-items: stretch; }
+
+.grid-flow-row {
+  flex-flow: row; }
+
+.grid-flow-row-rev {
+  flex-flow: row-reverse; }
+
+.grid-flow-col {
+  flex-flow: column; }
+
+.grid-flow-col-rev {
+  flex-flow: column-reverse; }
+
+.grid-flow-wrap {
+  flex-flow: wrap; }
+
+.grid-flow-wrap-rev {
+  flex-flow: wrap-reverse; }
+
+.grid-direction-row {
+  flex-direction: row; }
+
+.grid-direction-row-rev {
+  flex-direction: row-reverse; }
+
+.grid-direction-col {
+  flex-direction: column; }
+
+.grid-direction-col-rev {
+  flex-direction: column-reverse; }
+
+.grid-no-gutters {
+  margin-left: 0;
+  margin-right: 0; }
+  .grid-no-gutters > .col,
+  .grid-no-gutters > [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0; }
+
+/**
+ * Generate a set of grid base selectors for col-.
+ * ex.: [class*="col-"], which selects all elements that contain "col-" on their class list.
+ * This helps reduce total file size, and avoids a bulky final selector.
+ */
+/**
+ * Determines if the grid should generate a single base, or multiple, using the $fg-columns variable.
+ */
+/**
+ * Generate a set of grid column classes using a namespace
+ *
+ * .col-[namespace] for intelligent column division
+ * .col-[namespace]-[number] for a column that covers a specific number of columns (e.g. 1-12 by default)
+ * .off-[namespace]-[number] for pushing a col a specific number of columns (e.g. 1-11 by default)
+ * .off-[namespace]-reset for resetting a col's offset for that and larger namespaces
+ */
+/**
+ * Build the grid in two steps, to help minimize file size
+ * Step 1, for each namespace, create the grid-base
+ * Step 2, for each namespace, wrap the col width/offset measurements in their breakpoint media query
+ */
+.col-1 {
+  flex-basis: 8.33333%;
+  max-width: 8.33333%; }
+
+.off-1 {
+  margin-left: 8.33333%; }
+
+.col-2 {
+  flex-basis: 16.66667%;
+  max-width: 16.66667%; }
+
+.off-2 {
+  margin-left: 16.66667%; }
+
+.col-3 {
+  flex-basis: 25%;
+  max-width: 25%; }
+
+.off-3 {
+  margin-left: 25%; }
+
+.col-4 {
+  flex-basis: 33.33333%;
+  max-width: 33.33333%; }
+
+.off-4 {
+  margin-left: 33.33333%; }
+
+.col-5 {
+  flex-basis: 41.66667%;
+  max-width: 41.66667%; }
+
+.off-5 {
+  margin-left: 41.66667%; }
+
+.col-6 {
+  flex-basis: 50%;
+  max-width: 50%; }
+
+.off-6 {
+  margin-left: 50%; }
+
+.col-7 {
+  flex-basis: 58.33333%;
+  max-width: 58.33333%; }
+
+.off-7 {
+  margin-left: 58.33333%; }
+
+.col-8 {
+  flex-basis: 66.66667%;
+  max-width: 66.66667%; }
+
+.off-8 {
+  margin-left: 66.66667%; }
+
+.col-9 {
+  flex-basis: 75%;
+  max-width: 75%; }
+
+.off-9 {
+  margin-left: 75%; }
+
+.col-10 {
+  flex-basis: 83.33333%;
+  max-width: 83.33333%; }
+
+.off-10 {
+  margin-left: 83.33333%; }
+
+.col-11 {
+  flex-basis: 91.66667%;
+  max-width: 91.66667%; }
+
+.off-11 {
+  margin-left: 91.66667%; }
+
+.col-12 {
+  flex-basis: 100%;
+  max-width: 100%; }
+
+.off-reset {
+  margin-left: 0; }
+
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%; }
+
+@media only screen and (min-width: 480px) {
+  .col-sm-1 {
+    flex-basis: 8.33333%;
+    max-width: 8.33333%; }
+  .off-sm-1 {
+    margin-left: 8.33333%; }
+  .col-sm-2 {
+    flex-basis: 16.66667%;
+    max-width: 16.66667%; }
+  .off-sm-2 {
+    margin-left: 16.66667%; }
+  .col-sm-3 {
+    flex-basis: 25%;
+    max-width: 25%; }
+  .off-sm-3 {
+    margin-left: 25%; }
+  .col-sm-4 {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%; }
+  .off-sm-4 {
+    margin-left: 33.33333%; }
+  .col-sm-5 {
+    flex-basis: 41.66667%;
+    max-width: 41.66667%; }
+  .off-sm-5 {
+    margin-left: 41.66667%; }
+  .col-sm-6 {
+    flex-basis: 50%;
+    max-width: 50%; }
+  .off-sm-6 {
+    margin-left: 50%; }
+  .col-sm-7 {
+    flex-basis: 58.33333%;
+    max-width: 58.33333%; }
+  .off-sm-7 {
+    margin-left: 58.33333%; }
+  .col-sm-8 {
+    flex-basis: 66.66667%;
+    max-width: 66.66667%; }
+  .off-sm-8 {
+    margin-left: 66.66667%; }
+  .col-sm-9 {
+    flex-basis: 75%;
+    max-width: 75%; }
+  .off-sm-9 {
+    margin-left: 75%; }
+  .col-sm-10 {
+    flex-basis: 83.33333%;
+    max-width: 83.33333%; }
+  .off-sm-10 {
+    margin-left: 83.33333%; }
+  .col-sm-11 {
+    flex-basis: 91.66667%;
+    max-width: 91.66667%; }
+  .off-sm-11 {
+    margin-left: 91.66667%; }
+  .col-sm-12 {
+    flex-basis: 100%;
+    max-width: 100%; }
+  .off-sm-reset {
+    margin-left: 0; }
+  .col-sm {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%; } }
+
+@media only screen and (min-width: 768px) {
+  .col-md-1 {
+    flex-basis: 8.33333%;
+    max-width: 8.33333%; }
+  .off-md-1 {
+    margin-left: 8.33333%; }
+  .col-md-2 {
+    flex-basis: 16.66667%;
+    max-width: 16.66667%; }
+  .off-md-2 {
+    margin-left: 16.66667%; }
+  .col-md-3 {
+    flex-basis: 25%;
+    max-width: 25%; }
+  .off-md-3 {
+    margin-left: 25%; }
+  .col-md-4 {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%; }
+  .off-md-4 {
+    margin-left: 33.33333%; }
+  .col-md-5 {
+    flex-basis: 41.66667%;
+    max-width: 41.66667%; }
+  .off-md-5 {
+    margin-left: 41.66667%; }
+  .col-md-6 {
+    flex-basis: 50%;
+    max-width: 50%; }
+  .off-md-6 {
+    margin-left: 50%; }
+  .col-md-7 {
+    flex-basis: 58.33333%;
+    max-width: 58.33333%; }
+  .off-md-7 {
+    margin-left: 58.33333%; }
+  .col-md-8 {
+    flex-basis: 66.66667%;
+    max-width: 66.66667%; }
+  .off-md-8 {
+    margin-left: 66.66667%; }
+  .col-md-9 {
+    flex-basis: 75%;
+    max-width: 75%; }
+  .off-md-9 {
+    margin-left: 75%; }
+  .col-md-10 {
+    flex-basis: 83.33333%;
+    max-width: 83.33333%; }
+  .off-md-10 {
+    margin-left: 83.33333%; }
+  .col-md-11 {
+    flex-basis: 91.66667%;
+    max-width: 91.66667%; }
+  .off-md-11 {
+    margin-left: 91.66667%; }
+  .col-md-12 {
+    flex-basis: 100%;
+    max-width: 100%; }
+  .off-md-reset {
+    margin-left: 0; }
+  .col-md {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%; } }
+
+@media only screen and (min-width: 1200px) {
+  .col-lg-1 {
+    flex-basis: 8.33333%;
+    max-width: 8.33333%; }
+  .off-lg-1 {
+    margin-left: 8.33333%; }
+  .col-lg-2 {
+    flex-basis: 16.66667%;
+    max-width: 16.66667%; }
+  .off-lg-2 {
+    margin-left: 16.66667%; }
+  .col-lg-3 {
+    flex-basis: 25%;
+    max-width: 25%; }
+  .off-lg-3 {
+    margin-left: 25%; }
+  .col-lg-4 {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%; }
+  .off-lg-4 {
+    margin-left: 33.33333%; }
+  .col-lg-5 {
+    flex-basis: 41.66667%;
+    max-width: 41.66667%; }
+  .off-lg-5 {
+    margin-left: 41.66667%; }
+  .col-lg-6 {
+    flex-basis: 50%;
+    max-width: 50%; }
+  .off-lg-6 {
+    margin-left: 50%; }
+  .col-lg-7 {
+    flex-basis: 58.33333%;
+    max-width: 58.33333%; }
+  .off-lg-7 {
+    margin-left: 58.33333%; }
+  .col-lg-8 {
+    flex-basis: 66.66667%;
+    max-width: 66.66667%; }
+  .off-lg-8 {
+    margin-left: 66.66667%; }
+  .col-lg-9 {
+    flex-basis: 75%;
+    max-width: 75%; }
+  .off-lg-9 {
+    margin-left: 75%; }
+  .col-lg-10 {
+    flex-basis: 83.33333%;
+    max-width: 83.33333%; }
+  .off-lg-10 {
+    margin-left: 83.33333%; }
+  .col-lg-11 {
+    flex-basis: 91.66667%;
+    max-width: 91.66667%; }
+  .off-lg-11 {
+    margin-left: 91.66667%; }
+  .col-lg-12 {
+    flex-basis: 100%;
+    max-width: 100%; }
+  .off-lg-reset {
+    margin-left: 0; }
+  .col-lg {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%; } }

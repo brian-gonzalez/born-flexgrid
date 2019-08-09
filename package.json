@@ -1,0 +1,38 @@
+{
+  "name": "@borngroup/born-flexgrid",
+  "version": "3.0.5",
+  "description": "Enhances the useful [flex-grid](http://matthewsimo.github.io/scss-flex-grid/) to provide extra features, such as multi-base grids.",
+  "main": "dist/flex-grid.min.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass src/flex-grid.scss dist/flex-grid.css",
+    "postsass": "postcss dist/flex-grid.css --no-map --use autoprefixer --autoprefixer.browsers \"> 5%, ie 10, last 2 versions\" --use postcss-clean -o dist/flex-grid.min.css",
+    "less": "lessc src/flex-grid.less dist/flex-grid.css",
+    "postless": "npm run postsass",
+    "watch:scss": "nodemon -e scss --watch src/ -x npm run sass",
+    "watch:less": "nodemon -e less --watch src/ -x npm run less",
+    "prepublish": "npm run sass"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:danchill/born-packages.git"
+  },
+  "keywords": [
+    "flexbox",
+    "grid",
+    "css",
+    "scss",
+    "sass",
+    "less"
+  ],
+  "author": "BORN Group FE Team fed@borngroup.com",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "less": "^2.7.2",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "postcss-clean": "^1.0.2",
+    "postcss-cli": "^4.0.0"
+  }
+}
