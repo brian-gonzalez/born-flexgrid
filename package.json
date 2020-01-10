@@ -1,6 +1,6 @@
 {
   "name": "@borngroup/born-flexgrid",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Enhances the useful [flex-grid](http://matthewsimo.github.io/scss-flex-grid/) to provide extra features, such as multi-base grids.",
   "main": "dist/flex-grid.min.css",
   "scripts": {
