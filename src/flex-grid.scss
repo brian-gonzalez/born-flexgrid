@@ -199,6 +199,10 @@ $fg-use-off-half: false !default;
     flex-flow: wrap-reverse;
   }
 
+  &-flow-nowrap {
+    flex-flow: nowrap;
+  }
+
   &-direction-row {
     flex-direction: row;
   }
@@ -262,7 +266,8 @@ $fg-use-off-half: false !default;
   
   $colClassPrefix: if($isDefault, $fg-class-col, #{$fg-class-col + '-' + $namespace});
 
-  .#{$colClassPrefix} {
+  .#{$colClassPrefix},
+  .#{$colClassPrefix}-n {
     flex-grow: 1;
     flex-basis: 0;
     max-width: 100%;
