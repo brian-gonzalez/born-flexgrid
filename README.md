@@ -1,4 +1,4 @@
-# BORN Flexbox Grid #
+# Gridy #
 
 Enhances the useful [flex-grid](http://matthewsimo.github.io/scss-flex-grid/) to provide extra features, such as multi-base grids.
 
